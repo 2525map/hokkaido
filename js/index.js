@@ -56,7 +56,7 @@ $(document).ready(function(){
     map = L.map('map', {
         center: init_center_coords,
         zoom: 14,
-        minZoom: 12,
+        minZoom: 10,
         maxZoom: 17,
         layers: [bingRoadLayer]
     });
