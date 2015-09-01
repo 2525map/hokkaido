@@ -1,5 +1,5 @@
-// 地図表示時の中心座標
-var init_center_coords = [43.063968, 141.347899];
+﻿// 地図表示時の中心座標
+var init_center_coords = [43.7629105, 142.358114];
 
 // Bing APIのキー
 var bing_api_key = 'AhGQykUKW2-u1PwVjLwQkSA_1rCTFESEC7bCZ0MBrnzVbVy7KBHsmLgwW_iRJg17';
@@ -45,10 +45,10 @@ $(document).ready(function(){
 
     // 地図レイヤー一覧
     var baseMaps = {
-        "Bing(標準)": bingRoadLayer,
-        "国土地理院": gsiLayer,
-        "交通": osmLayer,
-        "写真": bingAerialLayer,
+        "BingMaps": bingRoadLayer,
+        "地理院地図": gsiLayer,
+        "公共交通": osmLayer,
+        "航空写真": bingAerialLayer,
         "Google": googleLayer
     };
 
@@ -84,14 +84,14 @@ $(document).ready(function(){
         $.getJSON('data/Elementary.geojson'),
         $.getJSON('data/Elementary_loc.geojson')
     ).done(function(facilityJson, middleSchoolJson, middleSchoolLocJson, elementaryJson, elementaryLocJson) {
-        // 認可保育園
+        // 認可保育所
         facilityGroup1 = L.geoJson(facilityJson, {
             onEachFeature: onEachFeatureFunc,
             pointToLayer: pointToLayerFunc,
             filter: facilityGroup1Filter
         });
 
-        // 認可外保育園
+        // 認可外保育所
         facilityGroup2 = L.geoJson(facilityJson, {
             onEachFeature: onEachFeatureFunc,
             pointToLayer: pointToLayerFunc,
@@ -156,11 +156,11 @@ $(document).ready(function(){
         map.addLayer(facilityGroup1);
 
         var overlayMaps = {
-            '保育園': facilityGroup1,
-            '認可外': facilityGroup2,
+            '認可保育所': facilityGroup1,
+            '認可外保育所': facilityGroup2,
             '幼稚園': facilityGroup3,
-            '小学校区': elementary,
-            '中学校区': middleSchool
+            '小学校': elementary,
+            '中学校': middleSchool
         };
 
         // 地図上にチェックボックス
